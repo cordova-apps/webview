@@ -1,0 +1,157 @@
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, target-densitydpi=medium-dpi, user-scalable=0" />
+</head>
+<style>
+iframe,h4,h5,ul, html, body{
+  margin:0px;
+	padding:0px;
+	font-family: 'Roboto', sans-serif;	
+	transition: all 0.5s;
+}
+body{	
+		background: #34495E;
+		color: #FFF;
+    text-align: center; 	
+	}
+
+
+	
+h4 {color: black; 
+	font-family: Roboto, sans-serif; 
+	font-size: 35px; 
+	font-weight: 300; 
+	
+	margin: 0px; 
+	padding:20px; 
+	text-align: center; 
+	text-rendering: optimizeLegibility;}
+	
+
+ul {list-style-type: none;
+	height: 1.5em;
+	width:100%;
+  background-color: #FFFFFF;
+	position:sticky;
+  overflow: hidden;
+	}
+
+button {
+    width: 76%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 10px;
+    margin: 8px 0;
+	  font-size: 25px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+iframe {
+    background-color: #34495E;
+    width: calc(100vw - 5px);
+    height: calc(100vh - 2em);
+    margin: 0em 0 0 0;
+}
+	
+
+
+.fixed-button {
+  background-color: #FF2434;
+  color: #FFFFFF;
+  border: none;
+  outline: none;
+  position: fixed;
+  bottom: 0px;
+  right: 15px;
+  height: 50px;
+  width: 50px;
+  margin-bottom: 20px;
+  border-radius: 30px;
+  box-shadow: 1px 3px 5px #888888;
+}
+
+@keyframes wobble {
+  16.65% {
+    -webkit-transform: translateY(8px);
+    -ms-transform: translateY(8px);
+    transform: translateY(8px);
+  }
+  33.3% {
+    -webkit-transform: translateY(-6px);
+    -ms-transform: translateY(-6px);
+    transform: translateY(-6px);
+  }
+  49.95% {
+    -webkit-transform: translateY(4px);
+    -ms-transform: translateY(4px);
+    transform: translateY(4px);
+  }
+  66.6% {
+    -webkit-transform: translateY(-2px);
+    -ms-transform: translateY(-2px);
+    transform: translateY(-2px);
+  }
+  83.25% {
+    -webkit-transform: translateY(1px);
+    -ms-transform: translateY(1px);
+    transform: translateY(1px);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+
+.wobble {
+  -webkit-animation-name: wobble;
+  animation-name: wobble;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+}
+</style>
+<body>
+<ul>
+  <input type="text" id="url" value="" onchange="saveData()">
+  <input type="button" value="Go" id="go" onclick="refreshIframe();">
+</ul>
+
+<iframe  name="Right" src="">
+  <p>Your browser does not support iframes.</p>
+</iframe>
+
+<script>
+
+function readData() {
+  var ifr = document.getElementsByName('Right')[0];
+  var url = document.getElementById("url");
+  if (typeof(Storage) !== "undefined") {
+    url.value = localStorage.getItem("urlData");
+    ifr.src = url.value;
+  }
+}
+
+function saveData() {
+  var url = document.getElementById("url");
+  if (typeof(Storage) !== "undefined") {
+    localStorage.setItem("urlData", url.value);
+  }
+}
+
+function refreshIframe() {
+    var ifr = document.getElementsByName('Right')[0];
+    var url = document.getElementById("url");
+    ifr.src = url.value;
+}
+
+readData();
+</script>
+</body>
